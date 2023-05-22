@@ -60,7 +60,7 @@ public class MemberController {
     public ResponseEntity<Map<String, Object>> login(@RequestBody MemberDto memberDto, HttpServletResponse response) throws IOException {
         MemberEntity loggedInMember = memberService.login(memberDto);
         String accessToken = jwtUtil.generateToken(loggedInMember.getUsername());
-        String refreshToken = jwtUtil.generateRefreshToken(loggedInMember.getUsername());  // 임시로 사용할 리프레시 토큰
+        String refreshToken = jwtUtil.generateRefreshToken(loggedInMember.getUsername());
 
         // JWT 토큰을 응답 헤더 Authorization에 추가
         String authorizationHeader = "Bearer " + accessToken;
